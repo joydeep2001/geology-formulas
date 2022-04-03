@@ -25,30 +25,30 @@ class ESS:
             print("invalid symbol!")
     
     def f1TakeInputs(self, inputSymbols):
-        inputList = []
+        inputList = {}
         for symbol in inputSymbols:
-            inp = float(input(symbol + ": "))
-            inputList.append(inp)
+            val = float(input(symbol + ": "))
+            inputList[symbol] = val
         return inputList
 
 
     def f1_k(self): 
-        inputValues = self.f1TakeInputs(["Vp", "p", "μ"])
-        k = inputValues[0]**2 * inputValues[1] - (4/3) * inputValues[2]
+        vp, p, u = self.f1TakeInputs(["Vp", "p", "u"]).values()
+        k = vp ** 2 * p - (4/3) * u
         print('%.5f'%k)
 
 
     def f1_p(self): 
-        inputValues = self.f1TakeInputs(["k", "μ", "vp"])
-        p = (inputValues[0] + (4/3) * inputValues[1]) / inputValues[2]**2 
+        k, u, vp = self.f1TakeInputs(["k", "u", "Vp"]).values()
+        p = (k + (4/3) * u) / vp ** 2 
         print('%.5f'%p)
 
     def f1_u(self): 
-        inputValues = self.f1TakeInputs(["vp", "p", "k"])
-        u = (inputValues[0] ** 2 * inputValues[1] - inputValues[2]) / (4 / 3)
+        vp, p, k = self.f1TakeInputs(["Vp", "p", "k"]).values()
+        u = (vp ** 2 * p - k) / (4 / 3)
         print('%.5f'%u)
 
     def f1_vp(self): 
-        inputValues = self.f1TakeInputs(["k", "u", "p"])
-        vp = ((inputValues[0] + (4 / 3) * inputValues[1]) / inputValues[2]) ** 0.5
+        k, u, p = self.f1TakeInputs(["k", "u", "p"])
+        vp = ((k + (4 / 3) * u) / p) ** 0.5
         print('%.5f'%vp)
