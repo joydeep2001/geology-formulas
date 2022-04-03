@@ -33,13 +33,13 @@ class ESS:
 
 
     def f1_k(self): 
-        vp, p, u = self.f1TakeInputs(["Vp", "p", "u"]).values()
+        vp, p, u = self.f1TakeInputs(["Vp", "p", "μ"]).values()
         k = vp ** 2 * p - (4/3) * u
         print('%.5f'%k)
 
 
     def f1_p(self): 
-        k, u, vp = self.f1TakeInputs(["k", "u", "Vp"]).values()
+        k, u, vp = self.f1TakeInputs(["k", "μ", "Vp"]).values()
         p = (k + (4/3) * u) / vp ** 2 
         print('%.5f'%p)
 
@@ -49,6 +49,6 @@ class ESS:
         print('%.5f'%u)
 
     def f1_vp(self): 
-        k, u, p = self.f1TakeInputs(["k", "u", "p"])
+        k, u, p = self.f1TakeInputs(["k", "μ", "p"]).values()
         vp = ((k + (4 / 3) * u) / p) ** 0.5
         print('%.5f'%vp)
